@@ -1,0 +1,180 @@
+"<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"UTF-8\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+  <title>Admin · VESTIRE</title>
+  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" />
+  <link href=\"https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@300;400;500;600&display=swap\" rel=\"stylesheet\" />
+  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css\" />
+  <link rel=\"stylesheet\" href=\"css/style.css\" />
+</head>
+<body class=\"admin-body\">
+
+  <!-- LOGIN -->
+  <section id=\"loginView\" class=\"admin-login\" data-testid=\"login-view\">
+    <div class=\"login-card\">
+      <a href=\"index.html\" class=\"brand-mark login-brand\" data-testid=\"login-brand\">VESTIRE</a>
+      <h2 class=\"login-title\">Admin access</h2>
+      <p class=\"login-sub\">Sign in to manage products &amp; homepage.</p>
+      <form id=\"loginForm\" autocomplete=\"off\">
+        <div class=\"mb-3\">
+          <label class=\"form-label\">Password</label>
+          <input type=\"password\" class=\"form-control form-control-lg\" id=\"pwInput\" placeholder=\"Enter admin password\" required data-testid=\"login-password\"/>
+        </div>
+        <div class=\"text-danger small mb-3 d-none\" id=\"loginError\" data-testid=\"login-error\">Wrong password. Try again.</div>
+        <button class=\"btn btn-dark btn-pill w-100\" type=\"submit\" data-testid=\"login-submit\">Sign in</button>
+      </form>
+      <p class=\"login-hint mt-3\" data-testid=\"login-hint\">
+        <i class=\"fa-solid fa-circle-info\"></i>
+        Default password: <code>admin123</code> &nbsp;(change in Settings)
+      </p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id=\"dashView\" class=\"admin-dash d-none\" data-testid=\"dash-view\">
+    <aside class=\"admin-side\">
+      <div class=\"brand-mark admin-brand\">VESTIRE</div>
+      <p class=\"admin-sub\">Admin Panel</p>
+      <nav class=\"admin-nav\" data-testid=\"admin-nav\">
+        <a href=\"#\" class=\"admin-link active\" data-tab=\"products\" data-testid=\"tab-products\"><i class=\"fa-solid fa-tag\"></i> Products</a>
+        <a href=\"#\" class=\"admin-link\" data-tab=\"hero\" data-testid=\"tab-hero\"><i class=\"fa-regular fa-image\"></i> Homepage</a>
+        <a href=\"#\" class=\"admin-link\" data-tab=\"settings\" data-testid=\"tab-settings\"><i class=\"fa-solid fa-gear\"></i> Settings</a>
+      </nav>
+      <div class=\"admin-side-bottom\">
+        <a href=\"index.html\" class=\"admin-link\" data-testid=\"view-site\"><i class=\"fa-solid fa-arrow-up-right-from-square\"></i> View site</a>
+        <a href=\"#\" class=\"admin-link\" id=\"logoutBtn\" data-testid=\"logout-btn\"><i class=\"fa-solid fa-right-from-bracket\"></i> Sign out</a>
+      </div>
+    </aside>
+
+    <main class=\"admin-main\">
+      <!-- PRODUCTS TAB -->
+      <div class=\"admin-tab\" id=\"tab-products\" data-testid=\"products-pane\">
+        <div class=\"admin-head d-flex justify-content-between align-items-center flex-wrap gap-3\">
+          <div>
+            <h2 class=\"admin-title\">Products</h2>
+            <p class=\"admin-desc\">Add, edit, or remove items from your catalog.</p>
+          </div>
+          <button class=\"btn btn-dark btn-pill\" id=\"newProductBtn\" data-testid=\"new-product-btn\"><i class=\"fa-solid fa-plus me-2\"></i>New product</button>
+        </div>
+
+        <div class=\"admin-stats row g-3 mb-4\" data-testid=\"admin-stats\">
+          <div class=\"col-md-4\"><div class=\"stat-card\"><span class=\"stat-label\">Total products</span><span class=\"stat-value\" id=\"statCount\">0</span></div></div>
+          <div class=\"col-md-4\"><div class=\"stat-card\"><span class=\"stat-label\">Categories</span><span class=\"stat-value\" id=\"statCats\">0</span></div></div>
+          <div class=\"col-md-4\"><div class=\"stat-card\"><span class=\"stat-label\">Avg. price</span><span class=\"stat-value\" id=\"statAvg\">&#8377;0</span></div></div>
+        </div>
+
+        <div class=\"table-card\">
+          <table class=\"table align-middle admin-table\" data-testid=\"products-table\">
+            <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th class=\"text-end\">Actions</th></tr></thead>
+            <tbody id=\"productsBody\"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HERO TAB -->
+      <div class=\"admin-tab d-none\" id=\"tab-hero\" data-testid=\"hero-pane\">
+        <div class=\"admin-head\">
+          <h2 class=\"admin-title\">Homepage hero</h2>
+          <p class=\"admin-desc\">Change the headline, subtitle, image, and CTA shown at the top of your site.</p>
+        </div>
+        <div class=\"row g-4\">
+          <div class=\"col-lg-6\">
+            <form id=\"heroForm\" class=\"form-card\">
+              <div class=\"mb-3\"><label class=\"form-label\">Eyebrow tag</label><input class=\"form-control\" id=\"heroEyebrow\" data-testid=\"hero-eyebrow-input\"/></div>
+              <div class=\"mb-3\"><label class=\"form-label\">Headline (use &lt;br&gt; for line break, &lt;em&gt; for italic)</label><textarea class=\"form-control\" id=\"heroTitle\" rows=\"2\" data-testid=\"hero-title-input\"></textarea></div>
+              <div class=\"mb-3\"><label class=\"form-label\">Subtitle</label><textarea class=\"form-control\" id=\"heroSubtitle\" rows=\"3\" data-testid=\"hero-subtitle-input\"></textarea></div>
+              <div class=\"mb-3\"><label class=\"form-label\">Image URL</label><input class=\"form-control\" id=\"heroImageUrl\" data-testid=\"hero-image-input\"/></div>
+              <div class=\"mb-3\"><label class=\"form-label\">Image caption</label><input class=\"form-control\" id=\"heroCaption\" data-testid=\"hero-caption-input\"/></div>
+              <button type=\"submit\" class=\"btn btn-dark btn-pill\" data-testid=\"hero-save-btn\">Save changes</button>
+              <span class=\"ms-3 small text-success d-none\" id=\"heroSaved\" data-testid=\"hero-saved-msg\">Saved ✓</span>
+            </form>
+          </div>
+          <div class=\"col-lg-6\">
+            <label class=\"form-label\">Live preview</label>
+            <div class=\"hero-preview\" data-testid=\"hero-preview\">
+              <img id=\"heroPreviewImg\" alt=\"\"/>
+              <div class=\"hero-preview-text\">
+                <span class=\"eyebrow\" id=\"heroPreviewEyebrow\"></span>
+                <h3 id=\"heroPreviewTitle\"></h3>
+                <p id=\"heroPreviewSub\"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div class=\"admin-tab d-none\" id=\"tab-settings\" data-testid=\"settings-pane\">
+        <div class=\"admin-head\">
+          <h2 class=\"admin-title\">Settings</h2>
+          <p class=\"admin-desc\">Change admin password or reset all content to defaults.</p>
+        </div>
+        <div class=\"row g-4\">
+          <div class=\"col-lg-6\">
+            <form id=\"pwForm\" class=\"form-card\">
+              <h5>Change password</h5>
+              <div class=\"mb-3\"><label class=\"form-label\">Current password</label><input type=\"password\" class=\"form-control\" id=\"curPw\" required data-testid=\"cur-pw\"/></div>
+              <div class=\"mb-3\"><label class=\"form-label\">New password</label><input type=\"password\" class=\"form-control\" id=\"newPw\" required minlength=\"4\" data-testid=\"new-pw\"/></div>
+              <button class=\"btn btn-dark btn-pill\" type=\"submit\" data-testid=\"save-pw-btn\">Update password</button>
+              <span class=\"ms-3 small d-none\" id=\"pwMsg\" data-testid=\"pw-msg\"></span>
+            </form>
+          </div>
+          <div class=\"col-lg-6\">
+            <div class=\"form-card\">
+              <h5>Reset content</h5>
+              <p class=\"text-muted small\">This will delete all your custom products and hero settings, restoring the default demo content.</p>
+              <button class=\"btn btn-outline-danger btn-pill\" id=\"resetBtn\" data-testid=\"reset-btn\"><i class=\"fa-solid fa-rotate-left me-2\"></i>Reset to defaults</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- Product modal -->
+  <div class=\"modal fade\" id=\"productModal\" tabindex=\"-1\" aria-hidden=\"true\">
+    <div class=\"modal-dialog modal-dialog-centered modal-lg\">
+      <div class=\"modal-content\">
+        <div class=\"modal-header\">
+          <h5 class=\"modal-title\" id=\"productModalTitle\">New product</h5>
+          <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+        </div>
+        <div class=\"modal-body\">
+          <form id=\"productForm\">
+            <input type=\"hidden\" id=\"prodId\"/>
+            <div class=\"row g-3\">
+              <div class=\"col-md-8\"><label class=\"form-label\">Name</label><input class=\"form-control\" id=\"prodName\" required data-testid=\"prod-name\"/></div>
+              <div class=\"col-md-4\"><label class=\"form-label\">Price (&#8377;)</label><input type=\"number\" class=\"form-control\" id=\"prodPrice\" required min=\"0\" data-testid=\"prod-price\"/></div>
+              <div class=\"col-md-6\"><label class=\"form-label\">Category</label>
+                <select class=\"form-select\" id=\"prodCategory\" required data-testid=\"prod-category\">
+                  <option value=\"Women\">Women</option>
+                  <option value=\"Men\">Men</option>
+                  <option value=\"Accessories\">Accessories</option>
+                  <option value=\"Footwear\">Footwear</option>
+                </select>
+              </div>
+              <div class=\"col-md-6\"><label class=\"form-label\">Tag (optional)</label><input class=\"form-control\" id=\"prodTag\" placeholder=\"New, Best seller…\" data-testid=\"prod-tag\"/></div>
+              <div class=\"col-12\"><label class=\"form-label\">Image URL</label><input class=\"form-control\" id=\"prodImage\" required placeholder=\"https://…\" data-testid=\"prod-image\"/></div>
+              <div class=\"col-12\"><label class=\"form-label\">Short description</label><textarea class=\"form-control\" id=\"prodDesc\" rows=\"2\" data-testid=\"prod-desc\"></textarea></div>
+            </div>
+          </form>
+        </div>
+        <div class=\"modal-footer\">
+          <button class=\"btn btn-link\" data-bs-dismiss=\"modal\">Cancel</button>
+          <button class=\"btn btn-dark btn-pill\" id=\"saveProductBtn\" data-testid=\"save-product-btn\">Save product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class=\"toast-stack\" id=\"toastStack\" data-testid=\"toast-stack\"></div>
+
+  <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\"></script>
+  <script src=\"js/data.js\"></script>
+  <script src=\"js/admin.js\"></script>
+</body>
+</html>
+"
