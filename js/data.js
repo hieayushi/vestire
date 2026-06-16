@@ -3,54 +3,47 @@
    ========================================================= */
 
 const STORAGE_KEYS = {
-  products: 'vestire.products.v1',
-  hero: 'vestire.hero.v1',
-  cart: 'vestire.cart.v1',
-  pw: 'vestire.pw.v1',
-  session: 'vestire.session.v1'
+  products: 'vestire.products.v2',
+  hero: 'vestire.hero.v2',
+  cart: 'vestire.cart.v2',
+  pw: 'vestire.pw.v2',
+  session: 'vestire.session.v2'
 };
 
 const DEFAULT_PASSWORD = 'admin123';
 
 const DEFAULT_HERO = {
-  eyebrow: 'Spring · Summer 26',
-  title: 'Quietly bold.<br/><em>Effortlessly worn.</em>',
-  subtitle: 'A capsule of considered pieces — soft tailoring, breathable linens, and timeless silhouettes designed for the way you actually live.',
-  image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1100&q=80',
-  caption: 'Look 04 — The Linen Set'
+  eyebrow: 'Festive · Heritage 26',
+  title: 'Elegance in tradition.<br/><em>Modern silhouettes.</em>',
+  subtitle: 'A curated collection of contemporary Indian garments — premium handloom cottons, heritage linens, and timeless silhouettes.',
+  image: 'https://images.unsplash.com/photo-1610030469668-93535c17b6b3?w=1100&q=80',
+  caption: 'Look 01 — Handwoven Chanderi Silk'
 };
 
 const DEFAULT_PRODUCTS = [
-  { id: 'p01', name: 'Linen Wrap Dress', category: 'Women', price: 4290, tag: 'New',
-    image: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=900&q=80',
-    desc: 'Lightweight European linen, hand-finished seams. Cut for everyday ease.' },
-  { id: 'p02', name: 'Cotton Pleated Trouser', category: 'Women', price: 3490, tag: '',
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=900&q=80',
-    desc: 'High-rise, soft pleat front, tapered through the leg.' },
-  { id: 'p03', name: 'Oversized Poplin Shirt', category: 'Women', price: 2890, tag: 'Best seller',
-    image: 'https://images.unsplash.com/photo-1551803091-e20673f15770?w=900&q=80',
-    desc: 'Crisp organic cotton poplin with a relaxed drop shoulder.' },
-  { id: 'p04', name: 'Merino Crewneck', category: 'Men', price: 3990, tag: '',
-    image: 'https://images.unsplash.com/photo-1602810316693-3667c854239a?w=900&q=80',
-    desc: 'Fine 18.5-micron merino. Soft, breathable, all-season.' },
-  { id: 'p05', name: 'Wide-Leg Chino', category: 'Men', price: 3690, tag: 'New',
-    image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=900&q=80',
-    desc: 'Heavyweight cotton twill, washed for vintage softness.' },
-  { id: 'p06', name: 'Linen Camp Shirt', category: 'Men', price: 2790, tag: '',
-    image: 'https://images.unsplash.com/photo-1604695573706-53170668f6a6?w=900&q=80',
-    desc: 'Open collar, boxy fit, mother-of-pearl buttons.' },
-  { id: 'p07', name: 'Woven Leather Belt', category: 'Accessories', price: 1490, tag: '',
-    image: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=900&q=80',
-    desc: 'Italian vegetable-tanned leather, brass hardware.' },
-  { id: 'p08', name: 'Silk Neck Scarf', category: 'Accessories', price: 1290, tag: 'New',
-    image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=900&q=80',
-    desc: 'Hand-rolled edges, watercolour botanical print.' }
+  { id: 'p01', name: 'Floral Anarkali Set', category: 'Women', price: 4890, tag: 'Best seller',
+    image: 'https://images.unsplash.com/photo-1608962714006-29d0b27e8a00?w=900&q=80',
+    desc: 'Graceful floral printed georgette Anarkali with cotton lining and matching dupatta.' },
+  { id: 'p02', name: 'Silk Banarasi Saree', category: 'Women', price: 6490, tag: 'New',
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=900&q=80',
+    desc: 'Handwoven pure Banarasi silk saree with intricate zari work. A festive masterpiece.' },
+  { id: 'p03', name: 'Pastel Chanderi Kurti', category: 'Women', price: 2990, tag: '',
+    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=900&q=80',
+    desc: 'Breathable hand-spun Chanderi cotton kurti with delicate gold embroidery.' },
+  { id: 'p04', name: 'Royal Sherwani Jacket', category: 'Men', price: 7990, tag: 'New',
+    image: 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=900&q=80',
+    desc: 'Structured raw silk sherwani jacket in rich ivory with heritage brass buttons.' },
+  { id: 'p05', name: 'Classic Linen Kurta', category: 'Men', price: 3290, tag: '',
+    image: 'https://images.unsplash.com/photo-1605518216992-6ca5ff4e061e?w=900&q=80',
+    desc: 'Premium pure linen kurta with mandarin collar, cut for a relaxed fit.' },
+  { id: 'p06', name: 'Handcrafted Nehru Jacket', category: 'Men', price: 3890, tag: 'Popular',
+    image: 'https://images.unsplash.com/photo-1597983073492-748ff57aa4c7?w=900&q=80',
+    desc: 'Tussar silk blend Nehru jacket in textured beige. Perfect for smart festive layering.' }
 ];
 
 const DEFAULT_CATEGORIES = [
-  { name: 'Women', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80' },
-  { name: 'Men',   image: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80' },
-  { name: 'Accessories', image: 'https://images.unsplash.com/photo-1611923134239-b9be5816e23d?w=800&q=80' }
+  { name: 'Women', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=80' },
+  { name: 'Men',   image: 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=800&q=80' }
 ];
 
 /* ---------- generic storage helpers ---------- */
