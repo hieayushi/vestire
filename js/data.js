@@ -3,11 +3,11 @@
    ========================================================= */
 
 const STORAGE_KEYS = {
-  products: 'vestire.products.v2',
-  hero: 'vestire.hero.v2',
-  cart: 'vestire.cart.v2',
-  pw: 'vestire.pw.v2',
-  session: 'vestire.session.v2'
+  products: 'vestire.products.v3',
+  hero: 'vestire.hero.v3',
+  cart: 'vestire.cart.v3',
+  pw: 'vestire.pw.v3',
+  session: 'vestire.session.v3'
 };
 
 const DEFAULT_PASSWORD = 'admin123';
@@ -38,12 +38,19 @@ const DEFAULT_PRODUCTS = [
     desc: 'Premium pure linen kurta with mandarin collar, cut for a relaxed fit.' },
   { id: 'p06', name: 'Handcrafted Nehru Jacket', category: 'Men', price: 3890, tag: 'Popular',
     image: 'https://images.unsplash.com/photo-1597983073492-748ff57aa4c7?w=900&q=80',
-    desc: 'Tussar silk blend Nehru jacket in textured beige. Perfect for smart festive layering.' }
+    desc: 'Tussar silk blend Nehru jacket in textured beige. Perfect for smart festive layering.' },
+  { id: 'p07', name: 'Embroidered Lehenga Choli', category: 'Children', price: 2490, tag: 'New',
+    image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80',
+    desc: 'Vibrant mirror-work embroidered lehenga choli for girls. Perfect for festivals and celebrations.' },
+  { id: 'p08', name: 'Printed Cotton Kurta Set', category: 'Children', price: 1490, tag: '',
+    image: 'https://images.unsplash.com/photo-1622122201714-77da0ca8e5d2?w=900&q=80',
+    desc: 'Soft breathable cotton printed kurta-pyjama set for boys. Easy everyday wear.' }
 ];
 
 const DEFAULT_CATEGORIES = [
-  { name: 'Women', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=80' },
-  { name: 'Men',   image: 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=800&q=80' }
+  { name: 'Women',    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=80' },
+  { name: 'Men',      image: 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=800&q=80' },
+  { name: 'Children', image: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=800&q=80' }
 ];
 
 /* ---------- generic storage helpers ---------- */
